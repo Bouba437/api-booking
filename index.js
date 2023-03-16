@@ -9,8 +9,8 @@ import  path from "path"; // ** vient directement de node
 import { fileURLToPath } from "url";
 import helmet from "helmet";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
-import { verifyToken } from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -41,7 +41,8 @@ const upload = multer({ storage });
 app.post("/auth/register", upload.single("picture"), register);
 
 /* ROUTES */
-app.use("/auth", authRoutes);
+app.use("/auth", authRoutes); //préfixe de l'ensemble des routes d'authenfication
+app.use("/users", userRoutes); //préfixe de l'ensemble des routes des utilisateurs
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
