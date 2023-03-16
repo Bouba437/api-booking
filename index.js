@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import helmet from "helmet";
 import authRoutes from "./routes/auth.js";
 import { register } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
